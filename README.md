@@ -5,6 +5,6 @@
 ![Hardware](https://img.shields.io/badge/Hardware-Portenta_X8-teal.svg)
 
 **Desarrollado por:** Fabrissio Fasabi Rivera
-n/ **Ubicación:** Creditex S.A.A. - Planta Lima, Perú (Área de Tintorería)
+**Ubicación:** Creditex S.A.A. - Planta Lima, Perú (Área de Tintorería)
 
 Desarrollo de dispositovo "Kraven" para EdgeComputing 
