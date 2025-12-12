@@ -4,7 +4,7 @@
 ![Docker](https://img.shields.io/badge/Docker-Compose-2496ED.svg)
 ![Hardware](https://img.shields.io/badge/Hardware-Portenta_X8-teal.svg)
 
-**Desarrollado por:** Darwin Sabino Diego
-**Ubicación:** Creditex S.A.A. - Planta Lima, Perú (Área de Tintorería)
+**Desarrollado por:** Fabrissio Fasabi Rivera
+n/ **Ubicación:** Creditex S.A.A. - Planta Lima, Perú (Área de Tintorería)
 
 Desarrollo de dispositovo "Kraven" para EdgeComputing 
