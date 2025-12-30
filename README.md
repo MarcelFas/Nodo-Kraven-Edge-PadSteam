@@ -3,6 +3,7 @@
 ![ubuntu](https://img.shields.io/badge/ubuntu-24.04-orange)
 ![docker](https://img.shields.io/badge/docker-latest-blue)
 ![licencia](https://img.shields.io/badge/ambiente-industrial-green)
+![mqtt](https://img.shields.io/badge/bridge-established-green)
 
 **Desarrollado por:** Fabrissio Fasabi Rivera  
 **Ubicación:** Creditex S.A.A. - Planta Lima, Perú (Área de Tintorería)  
