@@ -20,8 +20,25 @@ La solución está orquestada totalmente en **Docker** con las versiones más re
 * **Mensajería distribuida:** Apache Kafka (Bitnami) + Kafdrop (Visor).
 * **Procesamiento en streaming:** Apache Flink (ML Logic).
 * **Base de Datos (OLAP):** ClickHouse (Optimizado para Big Data).
-* **Visualización:** Apache Superset & Bot de Telegram.
-* **Inteligencia Artificial:** Ollama (Modelos locales Llama 3).
+* **Visualización:** Apache Superset & Bot de Telegram (IA Agente).
+* **Inteligencia Artificial:** Ollama (Modelos locales para análisis predictivo).
+
+---
+
+## 🔐 Acceso y Seguridad de NiFi 2.0
+Debido a las políticas estrictas de seguridad de NiFi 2.0, el acceso requiere una configuración de Proxy específica para evitar el error `Invalid SNI`.
+
+* **URL de Acceso:** [https://100.71.228.107:8443/nifi](https://100.71.228.107:8443/nifi)
+* **Credenciales Maestras:**
+    * **Usuario:** `admin`
+    * **Password:** `admin_password_123`
+
+### 🛠️ Solución al error "Invalid SNI"
+Si el acceso es bloqueado (Error 400), verificar que el `docker-compose.yml` contenga las siguientes variables de entorno:
+- `NIFI_WEB_PROXY_HOST=100.71.228.107:8443`
+- `NIFI_WEB_HTTPS_HOST=0.0.0.0`
+
+> **Nota Crítica:** Si se cambian las credenciales o el Host, es imperativo borrar la carpeta `./deploy/nifi/conf` para que NiFi regenere los certificados `.p12` correctamente en el próximo arranque.
 
 ---
 
@@ -31,6 +48,9 @@ Organizado bajo el estándar de "Limpieza Total" para facilitar la replicación 
 ```text
 padsteam/
 ├── deploy/          # Configuraciones, XMLs y Dockerfiles de cada servicio
+│   ├── nifi/        # Drivers JDBC y configuración de seguridad
+│   ├── clickhouse/  # Configuración de usuarios y red
+│   └── mosquitto/   # Configuración del broker MQTT
 ├── data/            # Persistencia de datos (ClickHouse, Kafka, Zookeeper)
 ├── docs/            # Manuales, diagramas Mermaid y documentación técnica
 ├── .env             # Control maestro de puertos y versiones
