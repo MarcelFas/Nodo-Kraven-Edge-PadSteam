@@ -51,7 +51,7 @@ padsteam/
 ├── deploy/          # Configuraciones, XMLs y Dockerfiles de cada servicio
 │   ├── nifi/        # Drivers JDBC y configuración de seguridad
 │   ├── clickhouse/  # Configuración de usuarios y red
-│   └── mosquitto/   # Configuración del broker MQTT
+│   └── mosquitto/   # Configuración del bróker MQTT
 ├── data/            # Persistencia de datos (ClickHouse, Kafka, Zookeeper)
 ├── docs/            # Manuales, diagramas Mermaid y documentación técnica
 ├── .env             # Control maestro de puertos y versiones
