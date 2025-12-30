@@ -59,3 +59,27 @@ graph LR
         F --> H[ia agent bot]
         H --> I[telegram]
     end
+
+
+graph TD
+    subgraph CAPA_CAMPO [capa de campo]
+        A[sensores padsteam] -->|mqtt| B(ps_mosquitto:1883)
+    end
+
+    subgraph NODO_EDGE [nodo edge - kraven]
+        B --> C{ps_nifi:8443}
+        C -->|ingesta| D[ps_kafka:29092]
+        D --> E[(ps_clickhouse:9005)]
+        D --> F[ps_flink:8081]
+    end
+
+    subgraph CAPA_USUARIO [interfaz y alertas]
+        E --> G[ps_superset:8088]
+        F --> H[ia agent bot]
+        H --> I[telegram bot]
+    end
+
+    %% Estilos de colores
+    style NODO_EDGE fill:#f9f,stroke:#333,stroke-width:2px
+    style CAPA_CAMPO fill:#bbf,stroke:#333,stroke-width:2px
+    style CAPA_USUARIO fill:#dfd,stroke:#333,stroke-width:2px
