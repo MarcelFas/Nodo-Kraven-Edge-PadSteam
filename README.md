@@ -43,6 +43,23 @@ Si el acceso es bloqueado (Error 400), verificar que el `docker-compose.yml` con
 
 ---
 
+## 📡 Arquitectura de Mensajería (MQTT Bridge)
+El nodo Kraven gestiona dos flujos de datos simultáneos mediante **Eclipse Mosquitto 2.0.22**:
+
+### 1. Ingesta de Campo (Portenta X8)
+El hardware de campo publica datos hacia el nodo Kraven utilizando credenciales locales.
+* **IP Servidor:** `172.25.10.236`
+* **Puerto:** `1883`
+* **Credenciales:** `kraven / kraven123`
+* **Tópicos:** `Creditex/Lima/PadSteam` y `Creditex/Lima/PadSteamv3`
+
+### 2. Salida a la Nube (Bridge Creditex)
+El nodo actúa como Gateway, reenviando los datos automáticamente al bróker central remoto.
+* **Endpoint Remoto:** `181.177.239.92:31621`
+* **Client ID:** `kraven_edge_LIMA_01`
+* **Credenciales Cloud:** `controlsi / controlsi!`
+* **Regla de Reenvío:** Replicación automática de toda la rama `Creditex/#`.
+
 ## 📂 Estructura del Proyecto
 Organizado bajo el estándar de "Limpieza Total" para facilitar la replicación en los 6 nodos de planta:
 
@@ -56,3 +73,4 @@ padsteam/
 ├── docs/            # Manuales, diagramas Mermaid y documentación técnica
 ├── .env             # Control maestro de puertos y versiones
 └── docker-compose.yml
+
