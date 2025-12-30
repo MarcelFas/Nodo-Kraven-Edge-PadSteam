@@ -32,3 +32,30 @@ padsteam/
 ├── data/            # persistencia de datos (volúmenes de clickhouse/kafka)
 ├── docs/            # manuales y diagramas técnicos
 └── .env             # control maestro de puertos y versiones
+
+## 🔄 flujo de datos (pipeline)
+el sistema sigue una arquitectura lineal y resiliente, asegurando que no se pierdan datos incluso si la base de datos está en mantenimiento:
+
+1. **captura:** los sensores envían tramas json vía **mqtt** al broker local.
+2. **orquestación:** **nifi** consume de mqtt, valida el esquema y lo publica en **kafka**.
+3. **buffering:** **kafka** actúa como sala de espera, permitiendo que múltiples consumidores (flink, bot, etc.) lean los datos.
+4. **persistencia:** los datos finales se guardan en **clickhouse** para consultas analíticas de alta velocidad.
+
+
+
+```mermaid
+graph LR
+    subgraph "planta (campo)"
+        A[sensores padsteam] --> B(mosquitto:1883)
+    end
+    subgraph "nodo edge (kraven)"
+        B --> C{apache nifi}
+        C --> D[apache kafka]
+        D --> E[(clickhouse)]
+        D --> F[apache flink]
+    end
+    subgraph "interfaz"
+        E --> G[superset]
+        F --> H[ia agent bot]
+        H --> I[telegram]
+    end
