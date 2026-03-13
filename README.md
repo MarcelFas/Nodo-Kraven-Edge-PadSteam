@@ -4,6 +4,8 @@
 ![docker](https://img.shields.io/badge/docker-latest-blue)
 ![licencia](https://img.shields.io/badge/ambiente-industrial-green)
 ![mqtt](https://img.shields.io/badge/bridge-established-green)
+![apache flink](https://img.shields.io/badge/apache_flink-latest-original)
+![grafana](https://img.shields.io/badge/grafana-latest-orange)
 
 **Desarrollado por:** Fabrissio Fasabi Rivera  
 **Ubicación:** Creditex S.A.A. - Planta Lima, Perú (Área de Tintorería)  
