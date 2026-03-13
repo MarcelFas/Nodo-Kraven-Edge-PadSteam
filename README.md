@@ -90,22 +90,42 @@ El sistema clasifica automáticamente cada sensor (`registro_id`) en una de las 
 * **Impacta**: Gestión de dosificación, volúmenes de químicos y Pick-Up.
 * **Otras Áreas**: Sensores de monitoreo de condición (vibración/ambiente) y consumos eléctricos.
 
+
+## 🤖 Automatización y Orquestación de Reportes (`n8n / IA`)
+Esta capa actúa como el puente entre los datos procesados y la toma de decisiones gerenciales, utilizando **n8n** como núcleo de integración y modelos de lenguaje locales:
+
+* **Generación de Reportes Automáticos:** Orquestador avanzado en Python (`report_orchestrator.py`) que automatiza la extracción de datos desde ClickHouse para generar reportes de supervisión diaria en formato **LaTeX** y PDF.
+* **Gestión de Turnos Industriales:** Lógica especializada en `shift_operations.py` para la segmentación de KPIs (Productividad, Paradas, Consumos) según los turnos rotativos de la planta Creditex.
+* **Analítica de Señales Dinámica:** Implementación de scripts (`signals_analytics.py`) para el cálculo de métricas post-proceso que alimentan los reportes de calidad.
+* **Inteligencia Artificial Local:** Integración de **Ollama** para el análisis de causa-raíz, procesando las alertas de Flink para sugerir acciones correctivas basadas en el comportamiento histórico.
+
+## 📊 Visualización y Monitoreo Estratégico (Grafana)
+Implementación de un centro de control visual de alta fidelidad, optimizado para entornos industriales críticos:
+
+* **Dashboards de Alta Disponibilidad:** Conexión directa a ClickHouse mediante motor OLAP para visualizaciones en tiempo real sin latencia.
+* **Infraestructura de Plugins Modificada:** Configuración de entorno seguro en Docker para la carga de plugins comunitarios esenciales, superando las restricciones de firma mediante variables de entorno:
+    * **Flowcharting:** Para la representación esquemática, animada y en tiempo real del flujo de tela en la máquina Pad Steam.
+    * **VolkovLabs ECharts:** Para el análisis de correlación multivariable y diagramas de dispersión complejos.
+    * **Dynamic Text:** Para la generación de avisos y alertas textuales dinámicas basadas en el estado del proceso.
+* **Gestión de Seguridad de Capa:** Implementación de `GF_PLUGINS_SKIP_SIGNATURE_VERIFICATION` para garantizar la interoperabilidad de componentes visuales personalizados sin comprometer la estabilidad del nodo Edge.
 ---
 ### 📂 Estructura del Proyecto
 La organización del repositorio sigue un estándar de arquitectura de microservicios para facilitar la portabilidad del nodo hacia otros Gateways de la planta:
 
 ```text
 padsteam/
-├── deploy/
-│   ├── flink/
-│   │   └── jobs/             # Motores de Alarmas y Analítica Avanzada
-│   ├── nifi/                 # Drivers JDBC y configuración de seguridad
-│   ├── clickhouse/           # Configuración de usuarios y red
-│   └── mosquitto/            # Configuración del bróker MQTT
-├── ingestor/                 # Microservicio de ingesta principal (Python)
-├── data/                     # Persistencia de datos (ClickHouse, Kafka, Zookeeper)
-├── docs/                     # Manuales, diagramas y documentación técnica
-├── .env                      # Control maestro de puertos y versiones
-└── docker-compose.yml        # Orquestador central de los 11 contenedores
-
-
+├── config/                     # Configuraciones maestras (YAML) y credenciales
+├── data/                       # Persistencia de volúmenes (Grafana Plugins, CH, Ollama)
+├── deploy/                     # Definiciones Docker por servicio (NiFi, Bot IA, Superset)
+├── ingestor/                   # Microservicios de ingesta y limpieza de DB (Python)
+├── n8n/                        # Orquestador de reportes, analítica y generador LaTeX
+│   ├── main.py                 # Punto de entrada del orquestador
+│   ├── shift_operations.py     # Lógica de gestión de turnos industriales
+│   └── latex_generator.py      # Motor de creación de reportes formales
+├── scripts/                    # Utilidades de mantenimiento y automatización
+├── www/                        # Archivos estáticos y web logs
+├── .env                        # Control maestro de variables de entorno
+├── docker-compose.yml          # Orquestador principal de infraestructura
+├── docker-compose-grafana.yml  # Orquestador de visualización avanzada
+├── docker-compose-flink.yml    # Orquestador de procesamiento streaming
+└── docker-compose-web.yml      # Interfaz y servicios adicionales
