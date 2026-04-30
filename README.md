@@ -150,3 +150,22 @@ f596237a347e   ps_report_generator                 "uvicorn main:app --…"   2 
 4ed0d5997c38   ollama/ollama                       "/bin/ollama serve"      3 months ago   Up 9 days     0.0.0.0:11434->11434/tcp, [::]:11434->11434/tcp                                                      ollama-ia
 user@user-default-string:~$
 
+
+
+CONTAINER ID   NAME                   CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+99587e21ed5c   ps_mosquitto           0.02%     2.191MiB / 62.64GiB   0.00%     133MB / 96.2MB    4.1kB / 0B        1
+bb8b32f19b08   ps_grafana             0.28%     952.8MiB / 62.64GiB   1.49%     76.8GB / 90GB     403MB / 1.91GB    52
+e6ccd9702b60   ps_flink_taskmanager   3.53%     2.659GiB / 62.64GiB   4.24%     6.62GB / 4.2GB    729kB / 407MB     387
+74671e725b6f   ps_flink_jobmanager    1.24%     1.159GiB / 62.64GiB   1.85%     737MB / 471MB     10.3MB / 536MB    159
+fc93de1b7b42   ps_nifi                1.29%     1.555GiB / 62.64GiB   2.48%     92.9MB / 87.1MB   4.55MB / 501MB    119
+bb2127d82620   ps_kafdrop             0.08%     468.8MiB / 62.64GiB   0.73%     40.2MB / 16.5MB   8.15MB / 26.5MB   50
+c768bcf49e1f   ps_limpiador           0.00%     17.14MiB / 62.64GiB   0.03%     1.59MB / 5.4kB    2.88MB / 0B       1
+bf2d8bdcae6d   ps_kafka               0.86%     1.077GiB / 62.64GiB   1.72%     262MB / 621MB     2.27MB / 228MB    89
+1cb9dc1260a3   ps_redis               0.69%     3.418MiB / 62.64GiB   0.01%     1.55MB / 126B     36.9kB / 0B       6
+a1504f71b84a   ps_zookeeper           0.07%     150.4MiB / 62.64GiB   0.23%     4.5MB / 1.84MB    8.19kB / 348kB    69
+32419c8a08cb   ps_clickhouse          61.57%    3.049GiB / 62.64GiB   4.87%     3.95GB / 8.2GB    363MB / 179GB     847
+f596237a347e   ps_report_generator    0.06%     83.03MiB / 62.64GiB   0.13%     15.7MB / 5.59kB   96.1MB / 0B       4
+666c56a1ca1e   ps_nginx_reports       0.00%     12.09MiB / 62.64GiB   0.02%     7.9MB / 9.75kB    7.82MB / 4.1kB    13
+7e882d45f279   ps_n8n                 0.15%     403.8MiB / 62.64GiB   0.63%     8.2MB / 427kB     218MB / 57MB      20
+765c2aa41b85   ai-agent-bot           0.00%     73.21MiB / 62.64GiB   0.11%     29.5MB / 52.5MB   66.8MB / 0B       14
+4ed0d5997c38   ollama-ia              0.00%     30.43MiB / 62.64GiB   0.05%     7.89MB / 126B     37MB / 0B         11
