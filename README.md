@@ -130,3 +130,23 @@ padsteam/
 ├── docker-compose-grafana.yml  # Orquestador de visualización avanzada
 ├── docker-compose-flink.yml    # Orquestador de procesamiento streaming
 └── docker-compose-web.yml      # Interfaz y servicios adicionales
+user@user-default-string:~$ docker ps -a
+CONTAINER ID   IMAGE                               COMMAND                  CREATED        STATUS        PORTS                                                                                                NAMES
+99587e21ed5c   eclipse-mosquitto:2.0               "/docker-entrypoint.…"   5 days ago     Up 33 hours   0.0.0.0:1883->1883/tcp, [::]:1883->1883/tcp                                                          ps_mosquitto
+bb8b32f19b08   grafana/grafana:latest              "/run.sh"                10 days ago    Up 9 days     0.0.0.0:3000->3000/tcp, [::]:3000->3000/tcp                                                          ps_grafana
+e6ccd9702b60   padsteam-flink-taskmanager          "/docker-entrypoint.…"   5 weeks ago    Up 3 days     6123/tcp, 8081/tcp                                                                                   ps_flink_taskmanager
+74671e725b6f   padsteam-flink-jobmanager           "/docker-entrypoint.…"   5 weeks ago    Up 3 days     6123/tcp, 0.0.0.0:8081->8081/tcp, [::]:8081->8081/tcp                                                ps_flink_jobmanager
+fc93de1b7b42   padsteam-nifi                       "../scripts/start.sh"    5 weeks ago    Up 33 hours   8000/tcp, 10000/tcp, 0.0.0.0:8443->8443/tcp, [::]:8443->8443/tcp                                     ps_nifi
+bb2127d82620   obsidiandynamics/kafdrop:4.1.0      "/kafdrop.sh"            5 weeks ago    Up 33 hours   0.0.0.0:9002->9000/tcp, [::]:9002->9000/tcp                                                          ps_kafdrop
+c768bcf49e1f   padsteam-ps_limpiador               "python -u limpieza_…"   5 weeks ago    Up 33 hours                                                                                                        ps_limpiador
+bf2d8bdcae6d   bitnami/kafka:3.6.1                 "/opt/bitnami/script…"   5 weeks ago    Up 33 hours   9092/tcp, 0.0.0.0:29092->29092/tcp, [::]:29092->29092/tcp                                            ps_kafka
+1cb9dc1260a3   redis:7-alpine                      "docker-entrypoint.s…"   5 weeks ago    Up 33 hours   6379/tcp                                                                                             ps_redis
+a1504f71b84a   bitnami/zookeeper:3.8               "/opt/bitnami/script…"   5 weeks ago    Up 33 hours   2181/tcp, 2888/tcp, 3888/tcp, 8080/tcp                                                               ps_zookeeper
+32419c8a08cb   clickhouse/clickhouse-server:24.8   "/entrypoint.sh"         5 weeks ago    Up 23 hours   0.0.0.0:8123->8123/tcp, [::]:8123->8123/tcp, 9009/tcp, 0.0.0.0:9005->9000/tcp, [::]:9005->9000/tcp   ps_clickhouse
+f596237a347e   ps_report_generator                 "uvicorn main:app --…"   2 months ago   Up 9 days     0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp                                                          ps_report_generator
+666c56a1ca1e   nginx:alpine                        "/docker-entrypoint.…"   2 months ago   Up 9 days     0.0.0.0:8080->80/tcp, [::]:8080->80/tcp                                                              ps_nginx_reports
+7e882d45f279   n8nio/n8n:latest                    "tini -- /docker-ent…"   3 months ago   Up 9 days     0.0.0.0:5678->5678/tcp, [::]:5678->5678/tcp                                                          ps_n8n
+765c2aa41b85   bot-ai_agent_bot                    "python -u bot.py"       3 months ago   Up 9 days                                                                                                          ai-agent-bot
+4ed0d5997c38   ollama/ollama                       "/bin/ollama serve"      3 months ago   Up 9 days     0.0.0.0:11434->11434/tcp, [::]:11434->11434/tcp                                                      ollama-ia
+user@user-default-string:~$
+
