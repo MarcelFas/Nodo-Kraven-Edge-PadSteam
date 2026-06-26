@@ -110,26 +110,8 @@ Implementación de un centro de control visual de alta fidelidad, optimizado par
     * **Dynamic Text:** Para la generación de avisos y alertas textuales dinámicas basadas en el estado del proceso.
 * **Gestión de Seguridad de Capa:** Implementación de `GF_PLUGINS_SKIP_SIGNATURE_VERIFICATION` para garantizar la interoperabilidad de componentes visuales personalizados sin comprometer la estabilidad del nodo Edge.
 ---
-### 📂 Estructura del Proyecto
-La organización del repositorio sigue un estándar de arquitectura de microservicios para facilitar la portabilidad del nodo hacia otros Gateways de la planta:
-
+### 📂 Estabilidad de Sistema
 ```text
-padsteam/
-├── config/                     # Configuraciones maestras (YAML) y credenciales
-├── data/                       # Persistencia de volúmenes (Grafana Plugins, CH, Ollama)
-├── deploy/                     # Definiciones Docker por servicio (NiFi, Bot IA, Superset)
-├── ingestor/                   # Microservicios de ingesta y limpieza de DB (Python)
-├── n8n/                        # Orquestador de reportes, analítica y generador LaTeX
-│   ├── main.py                 # Punto de entrada del orquestador
-│   ├── shift_operations.py     # Lógica de gestión de turnos industriales
-│   └── latex_generator.py      # Motor de creación de reportes formales
-├── scripts/                    # Utilidades de mantenimiento y automatización
-├── www/                        # Archivos estáticos y web logs
-├── .env                        # Control maestro de variables de entorno
-├── docker-compose.yml          # Orquestador principal de infraestructura
-├── docker-compose-grafana.yml  # Orquestador de visualización avanzada
-├── docker-compose-flink.yml    # Orquestador de procesamiento streaming
-└── docker-compose-web.yml      # Interfaz y servicios adicionales
 user@user-default-string:~$ docker ps -a
 CONTAINER ID   IMAGE                               COMMAND                  CREATED        STATUS        PORTS                                                                                                NAMES
 99587e21ed5c   eclipse-mosquitto:2.0               "/docker-entrypoint.…"   5 days ago     Up 33 hours   0.0.0.0:1883->1883/tcp, [::]:1883->1883/tcp                                                          ps_mosquitto
